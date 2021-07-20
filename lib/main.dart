@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:music_red_windows/pages/Main_Page.dart';
+import 'package:music_red_windows/pages/introduction_page.dart';
 //import 'package:music_red_windows/pages/chat_page.dart';
 import 'package:music_red_windows/pages/login_page.dart';
 import 'package:music_red_windows/pages/profile_page.dart';
