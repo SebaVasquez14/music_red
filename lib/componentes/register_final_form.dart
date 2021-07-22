@@ -19,6 +19,13 @@ class _RegisterFinalFormState extends State<RegisterFinalForm> {
     if (isOk) {}
   }
 
+  String _validator(String value) {
+    if (value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return 'Inserte un email válido';
+  }
+
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
@@ -33,13 +40,10 @@ class _RegisterFinalFormState extends State<RegisterFinalForm> {
               label: "GÉNERO",
               keyboardType: TextInputType.text,
               fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
-              onChanged: (text) {},
-              validator: (text) {
-                if (text.trim().length < 5) {
-                  return /*"INGRESE GÉNERO MUSICAL"*/;
-                }
-                return null;
+              onChanged: (text) {
+                _genero = text;
               },
+              validator: (text) => _validator(text),
             ),
             SizedBox(
               height: responsive.dp(2),
@@ -95,14 +99,16 @@ class _RegisterFinalFormState extends State<RegisterFinalForm> {
             ),
             //ComboBox(),
             TextButton(
-                onPressed: (){
+                onPressed: () {
+                  //if(_formKey.currentState.validate())
+
                   Navigator.pushNamed(context, 'success_page');
                 },
                 style: ButtonStyle(
                     padding: MaterialStateProperty.all(
                         EdgeInsets.symmetric(horizontal: responsive.wp(10))),
                     backgroundColor:
-                    MaterialStateProperty.all(Colors.red[900])),
+                        MaterialStateProperty.all(Colors.red[900])),
                 child: Text(
                   "FINALIZAR",
                   style: TextStyle(

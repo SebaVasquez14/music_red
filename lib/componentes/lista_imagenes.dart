@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:music_red_windows/utils/responsive.dart';
 
 class ListaImagenes extends StatefulWidget {
   final int size;
@@ -74,18 +75,20 @@ class _ListaImagenesState extends State<ListaImagenes> {
   }
 
   Widget _imagenDecorada(int index) {
+    final Responsive responsive = Responsive.of(context);
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.circular(10.0),
         image: DecorationImage(
             image: NetworkImage(
                 "https://picsum.photos/id/${ids[index]}/${widget.size}/${widget.size}")),
       ),
       child: Transform.translate(
-          offset: Offset(30, 107),
+          offset: Offset(responsive.dp(0.1), responsive.dp(11.5)),
           child: Text(
-            "Nombre",
+            "Nombre \n Instrumento",
+            textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white),
           )),
     );

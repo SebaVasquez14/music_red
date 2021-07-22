@@ -18,6 +18,13 @@ class _LoginFormState extends State<LoginForm> {
     if (isOk) {}
   }
 
+  String _validator(dynamic value) {
+    if (value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return 'Inserte un email válido';
+  }
+
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
@@ -35,8 +42,9 @@ class _LoginFormState extends State<LoginForm> {
                   color: Colors.white,
                 ),
                 decoration: InputDecoration(
-                    labelText: "Correo",
-                    labelStyle: TextStyle(color: Colors.white)),
+                  labelText: "Correo",
+                  labelStyle: TextStyle(color: Colors.white),
+                ),
               ),
 
               /*InputText(
@@ -69,8 +77,9 @@ class _LoginFormState extends State<LoginForm> {
                           color: Colors.white,
                         ),
                         decoration: InputDecoration(
-                            labelText: "Contraseña",
-                            labelStyle: TextStyle(color: Colors.white)),
+                          labelText: "Contraseña",
+                          labelStyle: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                     FlatButton(
@@ -100,9 +109,7 @@ class _LoginFormState extends State<LoginForm> {
                       color: Colors.white, fontSize: responsive.dp(1.5)),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.red[900],
-                  shadowColor: Colors.black38
-                ),
+                    primary: Colors.red[900], shadowColor: Colors.black38),
               ),
               SizedBox(
                 height: responsive.dp(3),
@@ -117,9 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                       color: Colors.white, fontSize: responsive.dp(1.5)),
                 ),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.red[900],
-                    shadowColor: Colors.black38
-                ),
+                    primary: Colors.red[900], shadowColor: Colors.black38),
               ),
               SizedBox(
                 height: responsive.dp(15),

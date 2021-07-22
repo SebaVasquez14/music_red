@@ -20,18 +20,14 @@ class InputText extends StatelessWidget {
       this.borderEnabled = true,
       this.fontSize = 15,
       required this.onChanged,
-        required this.validator
-      });
+      required this.validator});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: keyboardType,
       obscureText: obscureText,
       onChanged: onChanged,
-      style: TextStyle(fontSize: fontSize),
-
-
-
+      style: TextStyle(fontSize: fontSize, color: Colors.white),
       decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 5),
           // ? == si la propiedad es igual a true    : == sino

@@ -40,7 +40,7 @@ class _Main_PageState extends State<Main_Page> {
                     ),
                     ListaImagenes(
                       count: 3,
-                      size: 100,
+                      size: responsive.hp(12).toInt(),
                       perfil: false,
                     )
                   ],
