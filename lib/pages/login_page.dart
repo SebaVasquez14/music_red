@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:music_red_windows/componentes/header.dart';
 import 'package:music_red_windows/componentes/login_form.dart';
 import 'package:music_red_windows/utils/responsive.dart';
 import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatefulWidget {
-
   static const routeName = 'login';
 
   @override
@@ -29,46 +29,25 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
               child: Column(
                 children: [
-                  Container(
-                    height: responsive.hp(10),
-                    width: responsive.wp(100),
-                    decoration: BoxDecoration(color: Colors.red[900]),
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Text(
-                      "¡Bienvenido a MusicRed!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: responsive.dp(3)
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: responsive.hp(10),
-                    width: responsive.wp(100),
-                    decoration: BoxDecoration(color: Colors.black87),
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Text(
-                      "Tu Red Musical",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: responsive.dp(2.5)
-                      ),
-                    ),
-                  ),
+                  Header(),
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                         Image.network("https://images-na.ssl-images-amazon.com/images/I/81o5ioVTEML._AC_SL1500_.jpg",
-                          //width: responsive.wp(100),
-                            height: responsive.hp(80),
-                            fit: BoxFit.cover,
+                      //  Image.network("https://images-na.ssl-images-amazon.com/images/I/81o5ioVTEML._AC_SL1500_.jpg",
+                      //   //width: responsive.wp(100),
+                      //     height: responsive.hp(80),
+                      //     fit: BoxFit.cover,
 
-                          ),
-
+                      //   ),
+                      Container(
+                          height: responsive.hp(80),
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [Colors.black87, Color(0xFFB71C1C)],
+                          ))),
                       LoginForm()
-
                     ],
                   )
                 ],

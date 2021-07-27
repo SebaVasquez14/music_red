@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:music_red_windows/utils/responsive.dart';
 
 class AvatarButton extends StatelessWidget {
-
   final double imageSize;
 
   final String label;
 
-  const AvatarButton({ this.imageSize =  100, this.label = ""});
+  const AvatarButton({this.imageSize = 100, this.label = ""});
 
   @override
   Widget build(BuildContext context) {
-
     final Responsive responsive = Responsive.of(context);
 
     return Column(
@@ -31,8 +30,9 @@ class AvatarButton extends StatelessWidget {
                         offset: Offset(0, 20))
                   ]),
               child: ClipOval(
-                child: Image.asset('assets/user.png',
-                width: imageSize,
+                child: Image.asset(
+                  'assets/user.png',
+                  width: imageSize,
                   height: imageSize,
                 ),
               ),
@@ -50,24 +50,20 @@ class AvatarButton extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(3),
                   decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Colors.white,
-                          width: 2
-                      ),
+                      border: Border.all(color: Colors.white, width: 2),
                       color: Colors.pink,
-                      shape: BoxShape.circle
-                  ),
+                      shape: BoxShape.circle),
                 ),
                 onPressed: () {},
               ),
             )
           ],
         ),
-        Text(label,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: responsive.dp(1.6)
-        ),)
+        Text(
+          label,
+          style: GoogleFonts.alata(
+              color: Colors.white, fontSize: responsive.dp(1.6)),
+        )
       ],
     );
   }

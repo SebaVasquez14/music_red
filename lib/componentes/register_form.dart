@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:music_red_windows/componentes/input_text.dart';
 import 'package:music_red_windows/utils/responsive.dart';
 
@@ -31,91 +32,121 @@ class _RegisterFormState extends State<RegisterForm> {
           key: _formKey,
           child: Column(
             children: [
-              InputText(
-                label: "NOMBRES",
+              TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                 onChanged: (text) {},
                 validator: (text) {
-                  if (text.trim().length < 5) {
-                    return /*"INGRESE UN NOMBRE VÁLIDO"*/;
+                  if (text!.trim().length < 5) {
+                    return "Ingrese un nombre válido";
                   }
                   return null;
                 },
+                decoration: InputDecoration(
+                    labelText: "Nombres",
+                    labelStyle: GoogleFonts.alata(
+                      color: Colors.white,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        borderSide: BorderSide(color: Colors.white))),
               ),
               SizedBox(
                 height: responsive.dp(2),
               ),
-              InputText(
-                label: "APELLIDOS",
+              TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                 onChanged: (text) {},
                 validator: (text) {
-                  if (text.trim().length < 5) {
-                    return /*"INGRESE APELLIDOS VÁLIDOS"*/;
+                  if (text!.trim().length < 5) {
+                    return "Ingrese un apellido válido";
                   }
                   return null;
                 },
+                decoration: InputDecoration(
+                    labelText: "Apellidos",
+                    labelStyle: GoogleFonts.alata(
+                      color: Colors.white,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(20)))),
               ),
               SizedBox(
                 height: responsive.dp(2),
               ),
-              InputText(
-                label: "CORREO",
+              TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                 onChanged: (text) {
                   _email = text;
                 },
                 validator: (text) {
-                  if (!text.contains("@")) {
-                    return /*"Invalid email"*/;
+                  if (!text!.contains("@")) {
+                    return "Email inválido";
                   }
                   return null;
                 },
+                decoration: InputDecoration(
+                    labelText: "Correo",
+                    labelStyle: GoogleFonts.alata(color: Colors.white),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(20)))),
               ),
               SizedBox(
                 height: responsive.dp(2),
               ),
-              InputText(
-                label: "CONTRASEÑA",
+              TextFormField(
                 keyboardType: TextInputType.visiblePassword,
-                fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                 onChanged: (text) {
                   _password = text;
                 },
                 validator: (text) {
-                  if (text.trim().length < 6) {
-                    return/* "CONTRASEÑA INVÁLIDA"*/;
+                  if (text!.trim().length < 6) {
+                    return "CONTRASEÑA INVÁLIDA";
                   }
                   return null;
                 },
+                decoration: InputDecoration(
+                    labelText: "Contraseña",
+                    labelStyle: GoogleFonts.alata(
+                      color: Colors.white,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        borderSide: BorderSide(color: Colors.white))),
               ),
               SizedBox(
                 height: responsive.dp(2),
               ),
-              InputText(
-                label: "REPETIR CONTRASEÑA",
+              TextFormField(
                 keyboardType: TextInputType.visiblePassword,
-                fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
                 onChanged: (text) {
                   _password = text;
                 },
                 validator: (text) {
-                  if (text.trim().length < 6) {
-                    return /*"CONTRASEÑA INVÁLIDA"*/;
+                  if (text!.trim().length < 6) {
+                    return "Contraseña inválida";
                   }
                   return null;
                 },
+                decoration: InputDecoration(
+                    labelText: "Repetir Contraseña",
+                    labelStyle: GoogleFonts.alata(
+                      color: Colors.white,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(20)))),
               ),
               SizedBox(
                 height: responsive.dp(5),
               ),
               //ComboBox(),
               TextButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, 'register_final');
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, 'register_final');
+                    }
                   },
                   style: ButtonStyle(
                       padding: MaterialStateProperty.all(

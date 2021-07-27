@@ -9,9 +9,9 @@ class InputText extends StatelessWidget {
 
   final double fontSize;
 
-  final void Function(String text) onChanged;
+  final Function(String text) onChanged;
 
-  final void Function(String text) validator;
+  final Function(String text) validator;
 
   InputText(
       {this.label = "",

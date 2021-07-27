@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:music_red_windows/componentes/header.dart';
 import 'package:music_red_windows/utils/responsive.dart';
 
 class SuccessPage extends StatelessWidget {
@@ -21,62 +23,38 @@ class SuccessPage extends StatelessWidget {
               color: Colors.white,
               child: Column(
                 children: [
-                  Container(
-                    height: responsive.hp(10),
-                    width: responsive.wp(100),
-                    decoration: BoxDecoration(color: Colors.red[900]),
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Text(
-                      "¡Bienvenido a MusicRed!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white, fontSize: responsive.dp(3)),
-                    ),
-                  ),
-                  Container(
-                    height: responsive.hp(10),
-                    width: responsive.wp(100),
-                    decoration: BoxDecoration(color: Colors.black87),
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: Text(
-                      "Terminando de Crear tu Perfil...",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white, fontSize: responsive.dp(2.5)),
-                    ),
-                  ),
+                  Header(),
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      Image.network(
-                        "https://images-na.ssl-images-amazon.com/images/I/81o5ioVTEML._AC_SL1500_.jpg",
-                        //width: responsive.wp(100),
-                        height: responsive.hp(80),
-                        fit: BoxFit.cover,
-                      ),
+                      Container(
+                          height: responsive.hp(80),
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                            colors: [Colors.black87, Color(0xFFB71C1C)],
+                          ))),
                       Stack(
                         children: [
                           Center(
                             child: Container(
+                              padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  color: Colors.red[900],
+                                  color: Colors.black,
                                   borderRadius: BorderRadius.circular(6)),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    //shape: BoxShape.circle,
-                                    color: Colors.black54,
-                                    borderRadius: BorderRadius.circular(6)),
-                                child: Text(
-                                  '¡TU CUENTA HA SIDO CREADA CON ÉXITO!',
-                                  style: TextStyle(
-                                      fontSize: responsive.dp(2),
-                                      color: Colors.white),
-                                ),
+                              child: Text(
+                                '¡Tu cuenta ha sido creada con éxito!',
+                                style: GoogleFonts.lora(
+                                    fontSize: responsive.dp(2),
+                                    color: Colors.white),
                               ),
                             ),
                           ),
                           Column(children: [
-                            SizedBox(height: 90,),
+                            SizedBox(
+                              height: 90,
+                            ),
                             Center(
                               child: TextButton(
                                   onPressed: () {
@@ -86,10 +64,11 @@ class SuccessPage extends StatelessWidget {
                                       padding: MaterialStateProperty.all(
                                           EdgeInsets.symmetric(
                                               horizontal: responsive.wp(10))),
-                                      backgroundColor: MaterialStateProperty.all(
-                                          Colors.red[900])),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Colors.red[900])),
                                   child: Text(
-                                    "COMENZAR",
+                                    "Comenzar",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: responsive.dp(1.8)),

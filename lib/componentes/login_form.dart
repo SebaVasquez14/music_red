@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:music_red_windows/componentes/input_text.dart';
 import 'package:music_red_windows/utils/responsive.dart';
 
@@ -12,17 +13,13 @@ class _LoginFormState extends State<LoginForm> {
 
   String _email = "", _password = "";
 
+  TextEditingController emailCtrl = new TextEditingController();
+  TextEditingController passCtrl = new TextEditingController();
+
   _submit() {
     final bool isOk = _formKey.currentState!.validate();
 
     if (isOk) {}
-  }
-
-  String _validator(dynamic value) {
-    if (value.isEmpty) {
-      return 'Please enter some text';
-    }
-    return 'Inserte un email válido';
   }
 
   @override
@@ -38,62 +35,63 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             children: [
               TextFormField(
+                validator: (text) {
+                  if (!text!.contains("@")) {
+                    return "Email inválido";
+                  }
+                  return null;
+                },
+                keyboardType: TextInputType.emailAddress,
                 style: TextStyle(
                   color: Colors.white,
                 ),
                 decoration: InputDecoration(
                   labelText: "Correo",
                   labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                 ),
               ),
 
-              /*InputText(
-                label: "CORREO",
-                keyboardType: TextInputType.emailAddress,
-                fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
-                onChanged: (text) {
-                  _email = text;
-                },
-                validator: (text) {
-                  if (!text.contains("@")) {
-                    return */ /*"CORREO INVALIDO"*/ /*;
-                  }
-                  return null;
-                },
-              ),*/
+              // InputText(
+
+              //   label: "Correo",
+              //   keyboardType: TextInputType.emailAddress,
+              //   fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
+
+              //   onChanged: (text) {
+              //     _email = text;
+              //   },
+              //   validator: (text) {
+              //     if (text.isEmpty) {
+              //       return "Por favor, ingrese un correo válido";
+              //     }
+              //     return null;
+              //   },
+              // ),
 
               SizedBox(
                 height: responsive.dp(2),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.white))),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        obscureText: true,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                        decoration: InputDecoration(
-                          labelText: "Contraseña",
-                          labelStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    FlatButton(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      onPressed: () {},
-                      child: Text(
-                        "Olvide mi contraseña",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: responsive.dp(1.5)),
-                      ),
-                    )
-                  ],
+              TextFormField(
+                validator: (text) {
+                  if (text!.length > 6) {
+                    return null;
+                  } else {
+                    return 'La contraseña no debe ser más larga que 6 caracteres.';
+                  }
+                },
+                obscureText: true,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  labelText: "Contraseña",
+                  labelStyle: TextStyle(color: Colors.white),
                 ),
               ),
               SizedBox(
@@ -101,7 +99,9 @@ class _LoginFormState extends State<LoginForm> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'main_page');
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.pushNamed(context, 'main_page');
+                  }
                 },
                 child: Text(
                   "INICIAR SESIÓN",
@@ -109,11 +109,13 @@ class _LoginFormState extends State<LoginForm> {
                       color: Colors.white, fontSize: responsive.dp(1.5)),
                 ),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.red[900], shadowColor: Colors.black38),
+                    primary: Colors.indigo[900], shadowColor: Colors.black38),
               ),
-              SizedBox(
-                height: responsive.dp(3),
+              Divider(
+                thickness: 3,
+                height: 30,
               ),
+
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, 'register');
@@ -124,7 +126,7 @@ class _LoginFormState extends State<LoginForm> {
                       color: Colors.white, fontSize: responsive.dp(1.5)),
                 ),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.red[900], shadowColor: Colors.black38),
+                    primary: Colors.indigo[900], shadowColor: Colors.black38),
               ),
               SizedBox(
                 height: responsive.dp(15),
