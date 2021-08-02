@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_red_windows/componentes/header.dart';
 import 'package:music_red_windows/componentes/login_form.dart';
+import 'package:music_red_windows/models/mysql.dart';
 import 'package:music_red_windows/utils/responsive.dart';
 import 'package:flutter/widgets.dart';
 
@@ -12,6 +13,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  var db = new Mysql();
+  //var correo_usuario = '';
+  //var contraseña_usuario = '';
+
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
