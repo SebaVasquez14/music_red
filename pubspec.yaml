@@ -33,6 +33,7 @@ dependencies:
   http_parser: ^4.0.0
   introduction_screen: ^2.1.0
   stream_chat_flutter: ^2.0.0-nullsafety.9
+  another_flushbar: ^1.10.24
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,7 @@ flutter:
     - assets/intro_1.jpg
     - assets/intro_2.png
     - assets/intro_3.png
+    - assets/check.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

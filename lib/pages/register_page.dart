@@ -16,10 +16,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
-
-    final double pinkSize = responsive.wp(88);
-    final double orangeSize = responsive.wp(57);
-
     return SafeArea(
       child: Scaffold(
         body: GestureDetector(
@@ -37,12 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      // Image.network(
-                      //   "https://images-na.ssl-images-amazon.com/images/I/81o5ioVTEML._AC_SL1500_.jpg",
-                      //   //width: responsive.wp(100),
-                      //   height: responsive.hp(80),
-                      //   fit: BoxFit.cover,
-                      // ),
                       Container(
                           height: responsive.hp(80),
                           decoration: BoxDecoration(
@@ -51,7 +41,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             end: Alignment.bottomLeft,
                             colors: [Colors.black87, Color(0xFFB71C1C)],
                           ))),
-                      RegisterForm()
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: RegisterForm(),
+                      )
                     ],
                   )
                 ],

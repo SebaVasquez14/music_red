@@ -26,113 +26,91 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
 
-    return Positioned(
-      bottom: 30,
-      child: Container(
-        constraints: BoxConstraints(maxWidth: responsive.isTablet ? 430 : 360),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              TextFormField(
-                validator: (text) {
-                  if (!text!.contains("@")) {
-                    return "Email inválido";
-                  }
+    return Container(
+      constraints: BoxConstraints(maxWidth: responsive.isTablet ? 430 : 360),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            TextFormField(
+              validator: (text) {
+                if (!text!.contains("@")) {
+                  return "Email invalido";
+                }
+                return null;
+              },
+              keyboardType: TextInputType.emailAddress,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+              decoration: InputDecoration(
+                labelText: "Correo",
+                labelStyle: TextStyle(color: Colors.white),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+              ),
+            ),
+            SizedBox(
+              height: responsive.dp(2),
+            ),
+            TextFormField(
+              validator: (text) {
+                if (text!.length > 6) {
                   return null;
-                },
-                keyboardType: TextInputType.emailAddress,
+                } else {
+                  return 'La contraseña no debe ser más larga que 6 caracteres.';
+                }
+              },
+              obscureText: true,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                labelText: "Contraseña",
+                labelStyle: TextStyle(color: Colors.white),
+              ),
+            ),
+            SizedBox(
+              height: responsive.dp(5),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  Navigator.pushNamed(context, 'main_page');
+                }
+              },
+              child: Text(
+                "INICIAR SESIÓN",
                 style: TextStyle(
-                  color: Colors.white,
-                ),
-                decoration: InputDecoration(
-                  labelText: "Correo",
-                  labelStyle: TextStyle(color: Colors.white),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                ),
+                    color: Colors.white, fontSize: responsive.dp(1.5)),
               ),
-
-              // InputText(
-
-              //   label: "Correo",
-              //   keyboardType: TextInputType.emailAddress,
-              //   fontSize: responsive.dp(responsive.isTablet ? 1.2 : 1.4),
-
-              //   onChanged: (text) {
-              //     _email = text;
-              //   },
-              //   validator: (text) {
-              //     if (text.isEmpty) {
-              //       return "Por favor, ingrese un correo válido";
-              //     }
-              //     return null;
-              //   },
-              // ),
-
-              SizedBox(
-                height: responsive.dp(2),
-              ),
-              TextFormField(
-                validator: (text) {
-                  if (text!.length > 6) {
-                    return null;
-                  } else {
-                    return 'La contraseña no debe ser más larga que 6 caracteres.';
-                  }
-                },
-                obscureText: true,
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.indigo[900], shadowColor: Colors.black38),
+            ),
+            Divider(
+              thickness: 3,
+              height: 30,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'register');
+              },
+              child: Text(
+                "CREAR CUENTA",
                 style: TextStyle(
-                  color: Colors.white,
-                ),
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  labelText: "Contraseña",
-                  labelStyle: TextStyle(color: Colors.white),
-                ),
+                    color: Colors.white, fontSize: responsive.dp(1.5)),
               ),
-              SizedBox(
-                height: responsive.dp(5),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.pushNamed(context, 'main_page');
-                  }
-                },
-                child: Text(
-                  "INICIAR SESIÓN",
-                  style: TextStyle(
-                      color: Colors.white, fontSize: responsive.dp(1.5)),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.indigo[900], shadowColor: Colors.black38),
-              ),
-              Divider(
-                thickness: 3,
-                height: 30,
-              ),
-
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, 'register');
-                },
-                child: Text(
-                  "CREAR CUENTA",
-                  style: TextStyle(
-                      color: Colors.white, fontSize: responsive.dp(1.5)),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.indigo[900], shadowColor: Colors.black38),
-              ),
-              SizedBox(
-                height: responsive.dp(15),
-              )
-            ],
-          ),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.indigo[900], shadowColor: Colors.black38),
+            ),
+            SizedBox(
+              height: responsive.dp(15),
+            )
+          ],
         ),
       ),
     );

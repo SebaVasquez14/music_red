@@ -35,20 +35,19 @@ class SuccessPage extends StatelessWidget {
                             end: Alignment.bottomLeft,
                             colors: [Colors.black87, Color(0xFFB71C1C)],
                           ))),
-                      Stack(
+                      Column(
                         children: [
+                          Container(
+                              height: 200,
+                              width: 200,
+                              child: Image.asset('assets/check.png')),
+                          SizedBox(height: responsive.hp(7)),
                           Center(
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(6)),
-                              child: Text(
-                                '¡Tu cuenta ha sido creada con éxito!',
-                                style: GoogleFonts.lora(
-                                    fontSize: responsive.dp(2),
-                                    color: Colors.white),
-                              ),
+                            child: Text(
+                              '¡Tu cuenta ha sido creada con éxito!',
+                              style: GoogleFonts.lora(
+                                  fontSize: responsive.dp(2),
+                                  color: Colors.white),
                             ),
                           ),
                           Column(children: [

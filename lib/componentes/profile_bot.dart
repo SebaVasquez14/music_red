@@ -22,7 +22,6 @@ class ProfileBot extends StatelessWidget {
             style: ElevatedButton.styleFrom(primary: Colors.black),
           ),
           ListaImagenes(
-            perfil: true,
             count: 2,
             size: 100,
           )

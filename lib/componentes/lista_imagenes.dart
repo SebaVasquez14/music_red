@@ -1,20 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:music_red_windows/utils/responsive.dart';
 
 class ListaImagenes extends StatefulWidget {
   final int size;
   final int count;
-  bool perfil;
 
   ListaImagenes({
     Key? key,
     required this.size,
     required this.count,
-    required this.perfil,
   }) : super(key: key);
 
   @override
@@ -62,35 +60,11 @@ class _ListaImagenesState extends State<ListaImagenes> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: widget.count),
         itemBuilder: (context, index) {
-          if (widget.perfil != false) {
-            return Image.network(
-                "https://picsum.photos/id/${ids[index]}/${widget.size}/${widget.size}");
-          } else {
-            return _imagenDecorada(index);
-          }
+          return Image.network(
+              "https://picsum.photos/id/${ids[index]}/${widget.size}/${widget.size}");
         },
         itemCount: ids.length,
       ),
-    );
-  }
-
-  Widget _imagenDecorada(int index) {
-    final Responsive responsive = Responsive.of(context);
-    return Container(
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        image: DecorationImage(
-            image: NetworkImage(
-                "https://picsum.photos/id/${ids[index]}/${widget.size}/${widget.size}")),
-      ),
-      child: Transform.translate(
-          offset: Offset(responsive.dp(0.1), responsive.dp(11.5)),
-          child: Text(
-            "Nombre \n Instrumento",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white),
-          )),
     );
   }
 }
